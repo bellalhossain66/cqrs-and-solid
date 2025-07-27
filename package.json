@@ -1,0 +1,30 @@
+{
+  "name": "live-chat",
+  "description": "<p align=\"center\">   <a href=\"https://nodejs.org/\" target=\"blank\"><img src=\"https://nodejs.org/static/images/logo.svg\" width=\"120\" alt=\"Node.js Logo\" /></a> </p>",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "compile": "npx tsc",
+    "dev": "nodemon src/index.ts",
+    "start": "npm run compile && node dist/index.js",
+    "DBmigration": "ts-node ./src/helper/db.migration.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.2",
+    "sequelize": "^6.37.7",
+    "socket.io": "^4.8.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.4.2",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "author": "Prowhats",
+  "license": "ISC"
+}
