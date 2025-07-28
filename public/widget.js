@@ -220,6 +220,8 @@
             })
 
             socket.on('new_message', (msg) => {
+                console.log('new_message: ', msg);
+                title.textContent = msg?.senderPhone ?? 'Chat Agent';
                 addMessage(msg, false);
             });
 

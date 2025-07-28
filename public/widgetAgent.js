@@ -223,6 +223,8 @@
 
             socket.on('new_message', (msg) => {
                 receiverPhone = msg.senderPhone;
+                console.log('new_message: ', msg);
+                title.textContent = msg?.senderPhone ?? 'Chat User';
                 addMessage(msg, false);
             });
 

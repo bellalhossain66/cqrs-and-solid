@@ -5,7 +5,7 @@ import { Server } from 'socket.io';
 import cors from 'cors';
 import path from 'path';
 import healthRoute from './routes/route';
-import { RegisterChatSocket } from './sockets/chat.socket';
+import { RegisterChatSocket } from './sockets';
 
 dotenv.config({ quiet: true });
 const app = express();
