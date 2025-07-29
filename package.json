@@ -7,7 +7,7 @@
     "compile": "npx tsc",
     "dev": "nodemon src/index.ts",
     "start": "npm run compile && node dist/index.js",
-    "DBmigration": "ts-node ./src/helper/db.migration.ts"
+    "DBmigration": "ts-node ./src/infra/db/migrations/db.migration.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",

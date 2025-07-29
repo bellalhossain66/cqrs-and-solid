@@ -4,8 +4,8 @@ import http from 'http';
 import { Server } from 'socket.io';
 import cors from 'cors';
 import path from 'path';
-import healthRoute from './routes/route';
-import { RegisterChatSocket } from './sockets';
+import routes from './api/routes/route';
+import { RegisterChatSocket } from './infra/sockets';
 
 dotenv.config({ quiet: true });
 const app = express();
@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 
 app.use('/widget', express.static(path.join(__dirname, '../public')));
 app.use('/widgetAgent', express.static(path.join(__dirname, '../public')));
-app.use('/', healthRoute);
+app.use('/', routes);
 
 RegisterChatSocket(io);
 
