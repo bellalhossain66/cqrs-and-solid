@@ -1,13 +1,13 @@
 import { Server, Socket } from 'socket.io';
 import { v4 as uuidv4 } from 'uuid';
-import { SendMessageHandler } from '../../../api/handlers/sendmessage.handler';
 import { ChatService } from '../../../core/services/chat.service';
 import { MySQLMessageRepository } from '../../repositories/message.repository';
 import { SendMessageCommand } from '../../../core/use-cases/commands/sendmessage.command';
 import { connectedAgents } from '../../cache/connectedagents';
-import { GetOrCreateConversationHandler } from '../../../api/handlers/getorcreateconversation.handler';
 import { GetOrCreateConversationCommand } from '../../../core/use-cases/commands/getorcreateconversation.command';
-import { userAgentMap } from '../../../utils/useragentmap';
+import { SendMessageHandler } from '../../../core/use-cases/handlers/sendmessage.handler';
+import { GetOrCreateConversationHandler } from '../../../core/use-cases/handlers/getorcreateconversation.handler';
+import { userAgentMap } from '../../cache/useragentmap';
 
 const handler = new SendMessageHandler(new ChatService(new MySQLMessageRepository()));
 

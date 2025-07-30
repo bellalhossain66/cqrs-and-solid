@@ -1,9 +1,9 @@
 import { Socket, Server } from 'socket.io';
 import { MySQLMessageRepository } from '../../repositories/message.repository';
-import { GetMessagesHandler } from '../../../api/handlers/getmessage.handler';
 import { GetMessagesQuery } from '../../../core/use-cases/queries/getmessage.query';
-import { GetOrCreateConversationHandler } from '../../../api/handlers/getorcreateconversation.handler';
 import { GetOrCreateConversationCommand } from '../../../core/use-cases/commands/getorcreateconversation.command';
+import { GetMessagesHandler } from '../../../core/use-cases/handlers/getmessage.handler';
+import { GetOrCreateConversationHandler } from '../../../core/use-cases/handlers/getorcreateconversation.handler';
 
 const getMessagesHandler = new GetMessagesHandler(new MySQLMessageRepository());
 

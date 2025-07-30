@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { AppConstType } from '../../core/domain/interfaces/appconst.interface';
+import { AppConstType } from '../interfaces/appconst.interface';
 
 dotenv.config({ quiet: true });
 const dbName = process.env.DB_DATABASE ?? '';
