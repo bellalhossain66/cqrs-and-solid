@@ -1,10 +1,10 @@
 export interface IMessageRepository {
     saveMessage(
         conversationId: string,
-        senderId: number,
-        senderPhone: string,
-        senderType: 'user' | 'agent',
-        content: string
+        customer_id: number,
+        sender_type: 'user' | 'agent',
+        message: string,
+        message_type: 'text' | 'image' | 'video' | 'file' | 'system'
     ): Promise<void>;
 
     fetchMessagesByPhone(

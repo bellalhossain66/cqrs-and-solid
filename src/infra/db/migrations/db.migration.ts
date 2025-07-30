@@ -1,6 +1,8 @@
 import sequelizeDB from "../../../shared/config/db.config";
-require('../models/message.model');
-require('../models/conversation.model');
+require('../models/company_customer.model');
+require('../models/company_customer_conversation.model');
+require('../models/company_customer_message.model');
+require('../models/company_customers_log.model');
 
 async function migration() {
     try {

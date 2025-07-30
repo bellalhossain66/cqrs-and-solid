@@ -1,9 +1,9 @@
 export class SendMessageCommand {
     constructor(
-        public readonly senderId: number,
-        public readonly senderPhone: string,
         public readonly conversationId: string,
-        public readonly content: string,
-        public readonly senderType: 'user' | 'agent'
+        public readonly customer_id: number,
+        public readonly sender_type: 'user' | 'agent',
+        public readonly message: string,
+        public readonly message_type: 'text' | 'image' | 'video' | 'file' | 'system'
     ) { }
 }

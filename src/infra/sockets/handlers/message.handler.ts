@@ -17,25 +17,31 @@ export const handleSendMessage = (io: Server, socket: Socket, conversationHandle
     socket.on('send_message', async (data) => {
         const clientType = type as 'user' | 'agent';
         const receiverPhone = clientType === 'agent' ? data.receiverPhone : phone;
+
         const conversation = await conversationHandler.handle(
-            new GetOrCreateConversationCommand(123, receiverPhone as string, 'user@example.com')
+            new GetOrCreateConversationCommand(14, 'Mr Customer', phone as string, 'user@example.com')
         );
 
+        if (!conversation?.conversationId) {
+            socket.emit('error', { message: 'Conversation not found' });
+            return;
+        }
+
         const userMessage = {
-            senderPhone: phone as string,
-            senderType: clientType,
-            content: data.message,
-            senderId: 0,
-            conversationId: conversation?.conversationId || uuidv4(),
+            conversationId: conversation?.conversationId,
+            customer_id: conversation?.customer_id,
+            sender_type: clientType,
+            message: data.message,
+            message_type: data.message_type
         };
 
         try {
             const command = new SendMessageCommand(
-                userMessage.senderId,
-                userMessage.senderPhone,
                 userMessage.conversationId,
-                userMessage.content,
-                userMessage.senderType
+                userMessage.customer_id,
+                userMessage.sender_type,
+                userMessage.message,
+                userMessage.message_type
             );
             await handler.handle(command);
 

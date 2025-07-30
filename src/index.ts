@@ -30,9 +30,9 @@ app.use((req, res, next) => {
 
 app.use('/widget', express.static(path.join(__dirname, '../public')));
 app.use('/widgetAgent', express.static(path.join(__dirname, '../public')));
-app.use('/', routes);
+app.use('/api/v1', routes);
 
-RegisterChatSocket(io);
+// RegisterChatSocket(io);
 
 const PORT = (process.env.SERVER_TYPE == 'local') ? process.env.APP_PORT : 8000;
 server.listen(PORT, () => {

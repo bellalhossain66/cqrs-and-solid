@@ -13,8 +13,13 @@ export const handleGetMessages = (io: Server, socket: Socket, conversationHandle
     socket.on('get_messages', async ({ page = 1, limit = 20 }) => {
         try {
             const conversation = await conversationHandler.handle(
-                new GetOrCreateConversationCommand(123, phone as string, 'user@example.com')
+                new GetOrCreateConversationCommand(14, 'Mr Customer', phone as string, 'user@example.com')
             );
+
+            if (!conversation?.conversationId) {
+                socket.emit('error', { message: 'Conversation not found' });
+                return;
+            }
 
             const query = new GetMessagesQuery(conversation.conversationId, page, limit);
             const messages = await getMessagesHandler.handle(query);

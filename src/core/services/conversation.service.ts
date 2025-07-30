@@ -3,7 +3,7 @@ import { ConversationRepository } from '../../infra/repositories/conversation.re
 export class ConversationService {
     constructor(private readonly conversationRepo: ConversationRepository) { }
 
-    async getOrCreate(userId: number, user_phone?: string | null, user_email?: string | null) {
-        return await this.conversationRepo.getOrCreateConversation(userId, user_phone, user_email);
+    async getOrCreate(company_id: number, name: string|null, phone?: string | null, email?: string | null) {
+        return await this.conversationRepo.getOrCreateConversation(company_id, name, phone, email);
     }
 }

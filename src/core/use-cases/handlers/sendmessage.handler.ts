@@ -6,11 +6,11 @@ export class SendMessageHandler {
 
     async handle(command: SendMessageCommand): Promise<void> {
         await this.chatService.sendMessage(
-            command.senderId,
-            command.senderPhone,
             command.conversationId,
-            command.content,
-            command.senderType
+            command.customer_id,
+            command.sender_type,
+            command.message,
+            command.message_type
         );
     }
 }
